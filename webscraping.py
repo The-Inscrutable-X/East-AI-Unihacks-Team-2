@@ -12,7 +12,7 @@ import re
 #tell visible elements from invisible ones manually
 def mask_visible(element):
     #element.is_displayed()
-    if element.parent.name in ['style', 'script', 'head', 'title', 'meta', '[document]']:
+    if element.parent.name in ['style', 'script', 'head', 'title', 'meta', '[document]', 'a']:
         return False
     if isinstance(element, Comment):
         return False
@@ -20,14 +20,10 @@ def mask_visible(element):
 
 def text_from_html(html):
     soup = BeautifulSoup(html, 'html.parser')
-    texts = soup.findAll(text=True)
-    visible_texts = filter(mask_visible, texts)
-    print('type', type(texts))
-    def generator(texts):
-        for t in texts:
-
-        pass
-    return ((s+'.').strip() for t in visible_texts if (t != '\n') for s in re.split('\.', t) if len(s)>20)
+    texts = soup.findAll()
+    #visible_texts = filter(mask_visible, texts)
+    visible_texts = (i.get_text() for i in filter(mask_visible, texts))
+    return visible_texts
 
 def parse_another_site(response_object, driver, f):
     url = next(response_object)
