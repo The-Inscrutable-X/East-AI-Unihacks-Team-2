@@ -59,43 +59,17 @@ def text_from_html(html):
         for t in texts:
             pass'''
     #((s+'.').strip() for t in visible_texts if (t != '\n') for s in re.split('\.', t) if (len(s)>20 and t.parent.name != 'a'))
-    return [i.strip() for i in re.split('\.|\n', output) if len(i)>20]
+    return [i.strip() for i in re.split('\.|\n|。', output) if len(i)>20]
 
-def parse_another_site(response_object, driver, f):
+def parse_another_site(response_object, driver, f, query):
     url = next(response_object)
     driver.get(url)
     text = text_from_html(driver.page_source)
 
-    print('\n gotten text: ', url, type(text), 'Sentence count: ',len(text), '\n')
+    print('\n gotten text: ', type(text), 'Sentence count: ', len(text), url, '\n')
     for i in text:
         f.writelines('"'+i+'",\n')
-    pass
 
-"""
-setup selenium
-"""
-#print(os.environ['PATH'])
-os.environ['PATH'] += r';D:/Selenium_webautomation_drivers'
-options = Options()
-options.headless = False
-driver = webdriver.Chrome(options=options)
-
-"""
-googlesearch query
-breakfast, the first response brings us to a good connection with japan '朝ご飯', https://www.kurashiru.com/lists/d5d8b53c-5cf2-4c4b-b623-9f95ca0666ab
-the problem is that curated information souces, like geeksforgeeks often lack detailed or up to date information.
-english query = lightning
-"""
-
-query = '朝ご飯'
-#response = search(query, tld='co.in', num = 10, stop = 10, pause = 2)
-response = search(query, tld='co.in', pause = 2)
-with open('storage.csv', 'w', encoding='utf8') as f:
-    #csv_writer = csv.writer(f)
-    for x in range(3):
-        print(x)
-        parse_another_site(response, driver, f)
-    else:
-        print('finished')
-
-driver.quit()
+    output = [i for i in text if (query in i)]
+    print('how many sentences were found: ', len(output))
+    return output, url
