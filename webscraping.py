@@ -18,7 +18,7 @@ def mask_visible(element):
         return False
     return True
 
-def text_from_html(html):
+def text_from_html(html, query):
     soup = BeautifulSoup(html, 'html.parser')
     texts = soup.findAll(text=True)
     output = ''
@@ -58,13 +58,15 @@ def text_from_html(html):
     def generator(texts):
         for t in texts:
             pass'''
+    print('sentences', len(texts))
     #((s+'.').strip() for t in visible_texts if (t != '\n') for s in re.split('\.', t) if (len(s)>20 and t.parent.name != 'a'))
-    return [i.strip() for i in re.split('\.|\n|。', output) if len(i)>20]
+    #return [i.strip() for i in re.split('\.|\n|。', output) if len(i.strip())>20]
+    return [i.strip() for i in re.split('\.|\n|。', output) if len(i.strip())>len(query)]
 
 def parse_another_site(response_object, driver, f, query):
     url = next(response_object)
     driver.get(url)
-    text = text_from_html(driver.page_source)
+    text = text_from_html(driver.page_source, query)
 
     print('\n gotten text: ', type(text), 'Sentence count: ', len(text), url, '\n')
     for i in text:
