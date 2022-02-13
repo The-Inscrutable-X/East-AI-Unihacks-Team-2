@@ -22,7 +22,7 @@ def text_from_html(html, query):
     soup = BeautifulSoup(html, 'html.parser')
     texts = soup.findAll(text=True)
     output = ''
-    blacklist = [
+    '''blacklist = [
         '[document]',
         'noscript',
         'header',
@@ -32,7 +32,7 @@ def text_from_html(html, query):
         'input',
         'script',
         # there may be more elements you don't want, such as "style", etc.
-    ]
+    ]'''
     for t in texts:
         if mask_visible(t):
             '''if t.parent.name == 'a':

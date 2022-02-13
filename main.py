@@ -1,6 +1,7 @@
 from webscraping import *
 from simple_translator import *
 from api2 import *
+from understandability_algorithm import Understandability
 """
 setup selenium
 """
@@ -21,6 +22,11 @@ query = '"'+query_origin+'"'
 #query = query_origin
 
 #response = search(query, tld='co.in', num = 10, stop = 10, pause = 2)
+understandability_algorithm = Understandability('data_to_train.csv', debug = True)
+understandability_algorithm.train()
+print('Class testing:', understandability_algorithm.predict("hi how are you"))
+quit()
+
 response = search(query, tld='co.in', pause = 2)
 with open('storage.csv', 'w', encoding='utf8') as f:
     good_sentences = 0
