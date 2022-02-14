@@ -50,6 +50,7 @@ def display_separated(transSentence, language):
     print("{:<10} {} {:<10}".format("----------","|","----------"))
 
     for item in vocabList:
+        #sleep(1)
         definition = translator.translate(item, dest=language)
         definitions.append(definition.text)
         print("{:<10} {} {:<10}".format(item,"|",definition.text))

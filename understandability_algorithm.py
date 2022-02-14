@@ -33,7 +33,7 @@ class Understandability(object):
         self.model = None
         pass
 
-    def _syllables(word):
+    def _syllables(self, word):
         syllable_count = 0
         vowels = 'aeiouy'
         if word[0] in vowels:
@@ -49,7 +49,7 @@ class Understandability(object):
             syllable_count += 1
         return syllable_count
 
-    def stratified_split(X, y,
+    def stratified_split(self, X, y,
                          test_size=0.2,
                          validate_size=0.2,
                          random_state=0):
@@ -81,7 +81,7 @@ class Understandability(object):
 
 
         # Split data into training, validation, and testing data sets
-        X_train, X_test, X_val, y_train, y_test, y_val = self.stratified_split (X, y, random_state = 66)
+        X_train, X_test, X_val, y_train, y_test, y_val = self.stratified_split(X, y, random_state = 66)
 
         if self.debug == True:
             print ("Training (X_train and y_train): \t", X_train.shape, " \t", y_train.shape)

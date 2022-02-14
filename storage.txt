@@ -1,1 +1,23 @@
-おにぎり★小腹がすいたら★朝ご飯★おやつ Onigiri ★ If you are hungry ★ Breakfast ★ Snack Onigiri ★ kobara ga suitara ★ asa gohan ★ o yatsu
+gotten text:  <class 'list'> Sentence count:  239 https://cookpad.com/search/%E6%9C%9D%E3%81%94%E9%A3%AF
+
+how many sentences were found:  19
+finished
+
+|original 朝ご飯×妊すぐ厳選！妊娠中に助かるママ想いレシピ
+|translated 1000人が絶賛の朝ご飯レシピ
+|pronounciation 1000-Ri ga zessan no asagohan reshipi
+|url https://cookpad.com/search/%E6%9C%9D%E3%81%94%E9%A3%AF
+|comprehension level 2
+punctuation:  1000Ri 1000-Ri
+
+Vocab Table:
+
+Japanese   | English
+---------- | ----------
+ga         | But
+zessan     | Rave reviews
+no         | no
+asagohan   | asagohan
+reshipi    | recipe
+1000Ri     | 1000Ri
+(base) PS D:\code-ai-gym\personal_projects\East-AI-Unihacks-Team-2>

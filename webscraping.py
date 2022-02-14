@@ -74,4 +74,5 @@ def parse_another_site(response_object, driver, f, query):
 
     output = [i for i in text if (query in i)]
     print('how many sentences were found: ', len(output))
+    driver.quit()
     return output, url

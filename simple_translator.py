@@ -39,11 +39,16 @@ def translate_text(target, text):
     print(u"Detected source language: {}".format(result["detectedSourceLanguage"]))
 
 def translateEnglish(sentence):
-
+    #return '1000人が絶賛の朝ご飯レシピ', '1000-Ri ga zessan no asagohan reshipi'
     #translator = Translator(service_urls=['translate.googleapis.com'])
     translator = Translator()
-    print('heeeeeee',translator.detect(sentence))
+    #print('heeeeeee',translator.detect(sentence))
     pronunciation = translator.translate(sentence, dest = translator.detect(sentence).lang)
-    english = translator.translate(sentence, src = 'ja', dest = 'en')
-    print(english)
+
+    #sleep(1)
+    english = translator.translate(sentence, dest = 'en')
+    if english.src == english.dest:
+        print(english)
+        print('\n\n\n api broken \n\n\n')
+        quit()
     return english.text, pronunciation.pronunciation
