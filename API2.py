@@ -21,7 +21,7 @@ def display_separated(transSentence, language):
     for item in vocabList:
         for i in item:
             if i in string.punctuation:
-                item1 = item.replace(i,"")
+                item1 = item.copy().replace(i,"")
                 print('punctuation: ',item1,item)
                 vocabList.remove(item)
                 vocabList.append(item1)

@@ -7,6 +7,8 @@ import requests
 from googlesearch import search
 import csv
 import re
+from time import sleep
+
 
 #make more sentences for Audrey
 #tell visible elements from invisible ones manually
@@ -35,6 +37,7 @@ def text_from_html(html, query):
     ]'''
     for t in texts:
         if mask_visible(t):
+            #add a newline if previous or next is hyperlink
             '''if t.parent.name == 'a':
                 output += str(t)
             elif last_t_type == 'a':
@@ -47,7 +50,7 @@ def text_from_html(html, query):
             last_t_type = t.parent.name'''
             #for s in re.split('\.', t):
             #    output += str(t)+'|'
-            output += '{}'.format(t)
+            output += '\n{}'.format(t)
 
     '''visible_texts = (i.get_text() for i in texts)
     for x,i in enumerate(visible_texts):
@@ -58,7 +61,7 @@ def text_from_html(html, query):
     def generator(texts):
         for t in texts:
             pass'''
-    print('sentences', len(texts))
+    print('html text areas found:', len(texts))
     #((s+'.').strip() for t in visible_texts if (t != '\n') for s in re.split('\.', t) if (len(s)>20 and t.parent.name != 'a'))
     #return [i.strip() for i in re.split('\.|\n|。', output) if len(i.strip())>20]
     return [i.strip() for i in re.split('\.|\n|。', output) if len(i.strip())>len(query)]
@@ -66,6 +69,7 @@ def text_from_html(html, query):
 def parse_another_site(response_object, driver, f, query):
     url = next(response_object)
     driver.get(url)
+    sleep(3)
     text = text_from_html(driver.page_source, query)
 
     print('\n gotten text: ', type(text), 'Sentence count: ', len(text), url, '\n')
@@ -73,6 +77,5 @@ def parse_another_site(response_object, driver, f, query):
         f.writelines('"'+i+'",\n')
 
     output = [i for i in text if (query in i)]
-    print('how many sentences were found: ', len(output))
-    driver.quit()
+    print('how many acceptable sentences were found: ', len(output))
     return output, url
