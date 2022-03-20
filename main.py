@@ -9,11 +9,12 @@ from understandability_algorithm import Understandability
 #window = sg.Window(title="Hello World", layout=[[]], margins=(100, 50)).read()
 
 """setup selenium"""
-#print(os.environ['PATH'])
+print('setting up selenium')
 os.environ['PATH'] += r';D:/Selenium_webautomation_drivers'
 options = Options()
 options.headless = False
 driver = webdriver.Chrome(options=options)
+print('finished setting up selenium')
 """
 googlesearch query
 breakfast, the first response brings us to a good connection with japan '朝ご飯', https://www.kurashiru.com/lists/d5d8b53c-5cf2-4c4b-b623-9f95ca0666ab
@@ -22,18 +23,21 @@ english query = lightning,
 Alt: 朝ごはん,
 Result: query: 朝ご飯, sentence: 1000人が絶賛の朝ご飯レシピ, trans: Breakfast recipe acclaimed by 1000 people
 """
-query_origin = 'じゅんび'
+language = 'ja'
+query_origin = '化石'
 query = '"'+query_origin+'"'
 target_sentences = 50
 #query = query_origin
 
-#response = search(query, tld='co.in', num = 10, stop = 10, pause = 2)
+print('ai training start')
+response = search(query, tld='co.in', num = 10, stop = 10, pause = 2)
 understandability_algorithm = Understandability('data_to_train.csv', debug = False)
 understandability_algorithm.train()
-#print('Class testing:', understandability_algorithm.predict("Because the smaller ice particles rise faster in updrafts than the graupel particles, the charge on ice particles separates from the charge on graupel particles, and the charge on ice particles collects above the charge on graupel."))
+print('ai training_done')
+#print('Class testing:', understandability_algorithm.predict("vocabs are ontime and dazzling and fantastic."))
 #quit()
 
-response = search(query, tld='co.in', pause = 2)
+response = search(query, tld='co.in', pause = 2, lang = language)
 with open('storage.csv', 'w', encoding='utf8') as f:
     good_sentences = 0
     output_sentences = []

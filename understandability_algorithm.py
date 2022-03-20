@@ -10,10 +10,11 @@ sns.set(style="darkgrid")
 
 #NLP
 import nltk
-nltk.download('punkt')
+#nltk.download('punkt')
+#nltk.download("stopwords")
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
-nltk.download("stopwords")
+from nltk.stem import SnowballStemmer
 import string
 
 # data preparation for model learning
@@ -31,6 +32,8 @@ class Understandability(object):
         self.path = dataset_path
         self.debug = debug
         self.model = None
+        self.vocabs = self.read_vocabs()
+        self.language = 'german'
         pass
 
     def _syllables(self, word):
@@ -112,17 +115,28 @@ class Understandability(object):
         self.model = dt
         return dt
 
+    def read_vocabs(self):
+        with open('vocabs.txt', 'r') as f:
+            return ' '.join(f.readlines())
+
     def predict(self, input_sentence):
         user = input_sentence
         user_string = user.translate(str.maketrans('', '', string.punctuation))
         sent_tokenize(user_string)
         user_words = word_tokenize(user_string)
         user_list = [word for word in user_words if not word in stopwords.words()]
-        user_word_count = len(user_list)
-        user_char_count = 0
+        user_word_count = len(user_list) #word count
+
+        vocabs = word_tokenize(self.vocabs)
+        vocabs = [SnowballStemmer('english').stem(i) for i in vocabs if not i in stopwords.words()]
+        user_list = [SnowballStemmer('english').stem(i) for i in user_list]
+        percent_known = self._percent_known_words(user_list, vocabs)
+
+        user_char_count = 0 #char count
         for word in user_list:
             user_char_count = user_char_count + len(word)
-        user_sly_count = 0
+
+        user_sly_count = 0 #syllables count
         for word in user_list:
             user_sly_count = user_sly_count + self._syllables(word)
         #enter user vocab list here, calculate percentage of words understood
@@ -130,4 +144,11 @@ class Understandability(object):
         X = pd.DataFrame(user_data, columns = ['word_count', 'char_count', 'sly_count'])
 
         MyPrediction = self.model.predict(X)
+
+        print(user_word_count, user_char_count, user_sly_count, percent_known)
         return MyPrediction[0]
+
+    def _percent_known_words(self, vocabs_s, vocabs_u):
+        n_vocabs_k = len([i for i in vocabs_s if i in vocabs_u])
+        print(vocabs_u, vocabs_s)
+        return n_vocabs_k / len(vocabs_s)
