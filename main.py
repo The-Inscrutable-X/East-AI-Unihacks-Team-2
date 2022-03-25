@@ -23,10 +23,11 @@ english query = lightning,
 Alt: 朝ごはん,
 Result: query: 朝ご飯, sentence: 1000人が絶賛の朝ご飯レシピ, trans: Breakfast recipe acclaimed by 1000 people
 """
-language = 'ja'
-query_origin = '化石'
+language = 'en'
+query_origin = 'superman'
 query = '"'+query_origin+'"'
-target_sentences = 50
+target_sentences = 5
+target_understandability = 1.75
 #query = query_origin
 
 print('ai training start')
@@ -41,14 +42,31 @@ response = search(query, tld='co.in', pause = 2, lang = language)
 with open('storage.csv', 'w', encoding='utf8') as f:
     good_sentences = 0
     output_sentences = []
+    data_sentences = []
     for x in range(3):
         if good_sentences >= target_sentences:
             break
         print(x)
         sentences, url = parse_another_site(response, driver, f, query_origin)
+
+        parse_limit = int(input('how many sentences to review: '))
         for x, sentence in enumerate(sentences):
-            output_sentences.append((sentence, url))
-            good_sentences += 1
+            if x > parse_limit:
+                break
+
+            if input('improvement mode, y/n: ') == 'y':
+
+                print('human guidance mode')
+                print('|uncovered sentence:', sentence, '\n|url', url )
+                understandability = float(input('understandability of this sentence: '))
+                data_sentences.append((sentence, understandability))
+                if abs(understandability-target_understandability) < .5:
+                    output_sentences.append((sentence, url))
+                    good_sentences += 1
+            else:
+                print('automatic mode')
+                output_sentences.append((sentence, url))
+                good_sentences += 1
 
             api_broken = True
             if api_broken == False:
@@ -86,6 +104,10 @@ with open('storage.csv', 'w', encoding='utf8') as f:
             print('\n|original', sentence, '\n|translated', converted_sentence, '\n|pronounciation', converted_sentence_pronounciation, '\n|url', url, '\n|comprehension level', score)
             display_separated(converted_sentence_pronounciation, 'en')
     except IndexError:
-        print('query busted, do not include underlines, query must exist in website text exactly')
-    input('quit? ')
+        print('query busted, do not include underlines or special formats, query must exist in website text exactly')
+    input('close webdriver? ')
     driver.quit()
+    if input('update ml algorithm with new information from this study session? y/n: ') == 'n':
+        print('Exiting')
+    else:
+        understandability_algorithm.update(data_sentences)

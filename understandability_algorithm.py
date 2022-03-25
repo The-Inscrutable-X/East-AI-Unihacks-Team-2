@@ -52,6 +52,9 @@ class Understandability(object):
             syllable_count += 1
         return syllable_count
 
+    def get_path(self):
+        return self.path
+
     def stratified_split(self, X, y,
                          test_size=0.2,
                          validate_size=0.2,
@@ -120,6 +123,15 @@ class Understandability(object):
             return ' '.join(f.readlines())
 
     def predict(self, input_sentence):
+
+        features = self._sentence_to_numbers(input_sentence)
+        X = pd.DataFrame(features, columns = ['word_count', 'char_count', 'sly_count'])
+        MyPrediction = self.model.predict(X)
+
+        print('debug:', user_word_count, user_char_count, user_sly_count, percent_known)
+        return MyPrediction[0]
+
+    def _sentence_to_numbers(self, input_sentence):
         user = input_sentence
         user_string = user.translate(str.maketrans('', '', string.punctuation))
         sent_tokenize(user_string)
@@ -140,15 +152,20 @@ class Understandability(object):
         for word in user_list:
             user_sly_count = user_sly_count + self._syllables(word)
         #enter user vocab list here, calculate percentage of words understood
-        user_data = [[user_word_count, user_char_count, user_sly_count]]
-        X = pd.DataFrame(user_data, columns = ['word_count', 'char_count', 'sly_count'])
+        user_data = [user_word_count, user_char_count, user_sly_count]
 
-        MyPrediction = self.model.predict(X)
-
-        print(user_word_count, user_char_count, user_sly_count, percent_known)
-        return MyPrediction[0]
+        return user_data
 
     def _percent_known_words(self, vocabs_s, vocabs_u):
         n_vocabs_k = len([i for i in vocabs_s if i in vocabs_u])
         print(vocabs_u, vocabs_s)
         return n_vocabs_k / len(vocabs_s)
+
+    def update(self, new_info_lists):
+        with open(self.path, 'a+') as f:
+            for i in new_info_lists:
+                df_features = self._sentence_to_numbers(i[0])
+                df_features.append(i[1])
+                print(df_features)
+                df_features = [str(i) for i in df_features]
+                f.write(",".join(df_features))
