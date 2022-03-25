@@ -16,45 +16,54 @@ options.headless = False
 driver = webdriver.Chrome(options=options)
 print('finished setting up selenium')
 """
-googlesearch query
+examples, googlesearch querys:
 breakfast, the first response brings us to a good connection with japan '朝ご飯', https://www.kurashiru.com/lists/d5d8b53c-5cf2-4c4b-b623-9f95ca0666ab
 the problem is that curated information souces, like geeksforgeeks often lack detailed or up to date information.
-english query = lightning,
+english test query = lightning,
 Alt: 朝ごはん,
 Result: query: 朝ご飯, sentence: 1000人が絶賛の朝ご飯レシピ, trans: Breakfast recipe acclaimed by 1000 people
+
+Interesting Results Archive:
+行き先: 【合唱曲】行き先 / 歌詞付き: [Chorus] Destination / with lyrics: Youtube Video
+めいわくでんわ: 迷惑電話ストップサービス: Prank call stop service: Japan has a scam service stop service? America does not have this.
 """
-language = 'en'
-query_origin = 'superman'
+input('buffer')
+language = 'jp'
+query_origin = "行き先"
 query = '"'+query_origin+'"'
 target_sentences = 5
 target_understandability = 1.75
 #query = query_origin
 
 print('ai training start')
-response = search(query, tld='co.in', num = 10, stop = 10, pause = 2)
+#response = search(query, tld='co.in', num = 10, stop = 10, pause = 2)
 understandability_algorithm = Understandability('data_to_train.csv', debug = False)
 understandability_algorithm.train()
 print('ai training_done')
 #print('Class testing:', understandability_algorithm.predict("vocabs are ontime and dazzling and fantastic."))
 #quit()
-
 response = search(query, tld='co.in', pause = 2, lang = language)
+#response = search(query, tld='co.in', pause = 2)
 with open('storage.csv', 'w', encoding='utf8') as f:
     good_sentences = 0
     output_sentences = []
     data_sentences = []
-    for x in range(3):
+    for x in range(30):
         if good_sentences >= target_sentences:
             break
         print(x)
         sentences, url = parse_another_site(response, driver, f, query_origin)
-
-        parse_limit = int(input('how many sentences to review: '))
+        try:
+            parse_limit = int(input('how many sentences to review: '))
+            mode = input('improvement mode, y/n: ')
+        except:
+            print('skipping this website')
+            parse_limit = 0
         for x, sentence in enumerate(sentences):
-            if x > parse_limit:
+            if x >= parse_limit:
                 break
 
-            if input('improvement mode, y/n: ') == 'y':
+            if mode == 'y':
 
                 print('human guidance mode')
                 print('|uncovered sentence:', sentence, '\n|url', url )

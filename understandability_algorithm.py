@@ -10,8 +10,8 @@ sns.set(style="darkgrid")
 
 #NLP
 import nltk
-#nltk.download('punkt')
-#nltk.download("stopwords")
+nltk.download('punkt')
+nltk.download("stopwords")
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import SnowballStemmer
