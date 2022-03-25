@@ -1,5 +1,6 @@
 
 
+
 ('Suggest as a translation of "じゅんび"', 'https://www.linguee.com/japanese-english/translation/%E3%81%98%E3%82%85%E3%82%93%E3%81%B3.html')
 ('こころのじゅんび', 'https://www.linguee.com/japanese-english/translation/%E3%81%98%E3%82%85%E3%82%93%E3%81%B3.html')
 ('じゅんびばんたん', 'https://www.linguee.com/japanese-english/translation/%E3%81%98%E3%82%85%E3%82%93%E3%81%B3.html')
