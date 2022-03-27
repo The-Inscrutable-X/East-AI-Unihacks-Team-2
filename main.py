@@ -42,7 +42,7 @@ understandability_algorithm.train()
 print('ai training_done')
 #print('Class testing:', understandability_algorithm.predict("vocabs are ontime and dazzling and fantastic."))
 #quit()
-response = search(query, tld='co.in', pause = 2, lang = language)
+response = search(query, pause = 2, lang = language)
 #response = search(query, tld='co.in', pause = 2)
 with open('storage.csv', 'w', encoding='utf8') as f:
     good_sentences = 0
