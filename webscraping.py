@@ -1,6 +1,3 @@
-import os
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 from bs4.element import Comment
 import requests

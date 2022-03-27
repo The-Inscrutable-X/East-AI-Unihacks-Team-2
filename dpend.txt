@@ -1,0 +1,8 @@
+bs4
+requests
+googletrans
+sklearn
+nltk
+pandas
+numpy
+seaborn
