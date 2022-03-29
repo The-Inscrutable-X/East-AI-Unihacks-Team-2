@@ -132,4 +132,80 @@ def weblang(query, language = 'ja', target_sentences = 10):
         else:
             understandability_algorithm.update(data_sentences)
 
-weblang('行き先')
+def simple_weblang(query_origin = "Mann kommt", language = 'de', target_sentences = 10):
+
+    query = '"'+query_origin+'"'
+    parse_limit = 5 #limit of sentences to source from one website
+    #target_understandability = 1.75
+
+    print('ai training start, new session started')
+    #response = search(query, tld='co.in', num = 10, stop = 10, pause = 2)
+    understandability_algorithm = Understandability('data_to_train.csv', debug = False)
+    understandability_algorithm.train()
+    print('ai training_done')
+    #print('Class testing:', understandability_algorithm.predict("vocabs are ontime and dazzling and fantastic."))
+    #quit()
+    response = search(query, pause = 2, num = target_sentences, stop = target_sentences, lang = language)
+    #response = search(query, tld='co.in', pause = 2)
+    with open('storage.csv', 'w', encoding='utf8') as f:
+        good_sentences = 0
+        output_sentences = []
+        data_sentences = []
+        for x in range(30):
+            if good_sentences >= target_sentences:
+                break
+            print(x)
+            sentences, url = parse_another_site(response, driver, f, query_origin)
+            if parse_limit > len(sentences):
+                parse_limit = len(sentences)
+            for x, sentence in enumerate(sentences):
+                if x >= parse_limit:
+                    break
+
+                api_broken = True
+                if api_broken == False:
+                    converted_sentence, converted_sentence_pronounciation = translateEnglish(sentence)
+                    """with open('storage.txt', 'a', encoding='utf8') as g:
+                        g.writelines('|original', sentence, '\n|translated', converted_sentence, '\n|pronounciation', converted_sentence_pronounciation, '\n')
+                        pass"""
+                    if converted_sentence_pronounciation == None:
+                        score = understandability_algorithm.predict(converted_sentence)
+                    elif converted_sentence_pronounciation != None:
+                        score = understandability_algorithm.predict(converted_sentence_pronounciation)
+
+                    if score == 1:
+                        output_sentences.append([sentence, converted_sentence, converted_sentence_pronounciation, url, score])
+                        good_sentences += 1
+                else:
+                    score = understandability_algorithm.predict(sentence)
+                    print(score)
+                    if score > .3:
+                        output_sentences.append([sentence, url, score])
+                        good_sentences += 1
+
+        print('finished')
+        #converted_sentence, converted_sentence_pronounciation = translate_text('en', sentence)
+        try:
+            with open('output.txt', 'a+', encoding='utf8') as f:
+                f.write('\n\n')
+                f.write('\n'.join([str(i) for i in output_sentences]))
+            checkout = output_sentences[0][1]
+            checkout_sentence = output_sentences[0][0]
+            driver.get(checkout)
+            import pyperclip
+            pyperclip.copy(checkout_sentence)
+            spam = pyperclip.paste()
+            #print(spam)
+            if api_broken == False:
+                converted_sentence, converted_sentence_pronounciation = translateEnglish(sentence)
+                print('\n|original', sentence, '\n|translated', converted_sentence, '\n|pronounciation', converted_sentence_pronounciation, '\n|url', url, '\n|comprehension level', score)
+                display_separated(converted_sentence_pronounciation, 'en')
+        except IndexError:
+            print('query busted, do not include underlines or special formats, query must exist in website text exactly')
+        driver.quit()
+        understandability_algorithm.update(data_sentences)
+
+    return output_sentences 
+
+#weblang('行き先')
+simple_weblang('行き先')
