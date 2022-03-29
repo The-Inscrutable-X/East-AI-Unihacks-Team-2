@@ -3,14 +3,14 @@ gotten text:  <class 'list'> Sentence count:  239 https://cookpad.com/search/%E6
 how many sentences were found:  19
 finished
 
-|original 朝ご飯×妊すぐ厳選！妊娠中に助かるママ想いレシピ
-|translated 1000人が絶賛の朝ご飯レシピ
+|original 1000人が絶賛の朝ご飯レシピ
+|translated Breakfast recipe acclaimed by 1000 people
 |pronounciation 1000-Ri ga zessan no asagohan reshipi
 |url https://cookpad.com/search/%E6%9C%9D%E3%81%94%E9%A3%AF
 |comprehension level 2
 punctuation:  1000Ri 1000-Ri
 
-Vocab Table:
+Vocab Table: (replace with nltk or japanese version of nltk tokenization)
 
 Japanese   | English
 ---------- | ----------

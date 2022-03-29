@@ -6,3 +6,11 @@
 ('しゅっぱつじこく', 'http://www.romajidesu.com/dictionary/meaning-of-%E3%81%97%E3%82%85%E3%81%A3%E3%81%B1%E3%81%A4.html')
 ('しゅっぱつび', 'http://www.romajidesu.com/dictionary/meaning-of-%E3%81%97%E3%82%85%E3%81%A3%E3%81%B1%E3%81%A4.html')
 
+
+
+('Übersetzung für "Der Mann kommt" im Englisch', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/Der+Mann+kommt')
+('Übersetzung für "ein Mann kommt" im Englisch', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/ein+Mann+kommt')
+('ein Mann kommt', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/ein+Mann+kommt')
+('ein Mann kommt', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/ein+Mann+kommt')
+('ein Mann kommt', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/ein+Mann+kommt')
+('ein Mann kommt', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/ein+Mann+kommt')

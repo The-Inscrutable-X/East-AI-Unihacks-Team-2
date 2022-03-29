@@ -1,39 +1,41 @@
+import os
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from webscraping import parse_another_site, search
+from simple_translator import translateEnglish
+from sentence_segmentation import display_separated
+from understandability_algorithm import Understandability
+
+"""setup selenium"""
+print('setting up selenium')
+os.environ['PATH'] += r';D:/Selenium_webautomation_drivers'
+options = Options()
+options.headless = False
+driver = webdriver.Chrome(options=options)
+print('finished setting up selenium')
+#import PySimpleGUI as pg
+
+#"""setup gui"""
+
+#window = sg.Window(title="Hello World", layout=[[]], margins=(100, 50)).read()
+"""
+examples, googlesearch querys:
+breakfast, the first response brings us to a good connection with japan '朝ご飯', https://www.kurashiru.com/lists/d5d8b53c-5cf2-4c4b-b623-9f95ca0666ab
+the problem is that curated information souces, like geeksforgeeks often lack detailed or up to date information.
+english test query = lightning,
+Alt: 朝ごはん,
+Result: query: 朝ご飯, sentence: 1000人が絶賛の朝ご飯レシピ, trans: Breakfast recipe acclaimed by 1000 people
+We may be able to reroute searches to japanese reddit
+
+Interesting Results Archive:
+行き先: 【合唱曲】行き先 / 歌詞付き: [Chorus] Destination / with lyrics: Youtube Video
+めいわくでんわ: 迷惑電話ストップサービス: Prank call stop service: Japan has a scam service stop service? America does not have this.
+"""
 def weblang(query, language = 'ja', target_sentences = 10):
-    import os
-    from selenium import webdriver
-    from selenium.webdriver.chrome.options import Options
-    from webscraping import parse_another_site
-    from simple_translator import translateEnglish
-    from sentence_segmentation import display_separated
-    from understandability_algorithm import Understandability
-    #import PySimpleGUI as pg
 
-    #"""setup gui"""
-
-    #window = sg.Window(title="Hello World", layout=[[]], margins=(100, 50)).read()
-
-    """setup selenium"""
-    print('setting up selenium')
-    os.environ['PATH'] += r';C:\Users\chenz\Documents\GitHub\East-AI-Unihacks-Team-2\chromewebdriver'
-    options = Options()
-    options.headless = False
-    driver = webdriver.Chrome(options=options)
-    print('finished setting up selenium')
-    """
-    examples, googlesearch querys:
-    breakfast, the first response brings us to a good connection with japan '朝ご飯', https://www.kurashiru.com/lists/d5d8b53c-5cf2-4c4b-b623-9f95ca0666ab
-    the problem is that curated information souces, like geeksforgeeks often lack detailed or up to date information.
-    english test query = lightning,
-    Alt: 朝ごはん,
-    Result: query: 朝ご飯, sentence: 1000人が絶賛の朝ご飯レシピ, trans: Breakfast recipe acclaimed by 1000 people
-
-    Interesting Results Archive:
-    行き先: 【合唱曲】行き先 / 歌詞付き: [Chorus] Destination / with lyrics: Youtube Video
-    めいわくでんわ: 迷惑電話ストップサービス: Prank call stop service: Japan has a scam service stop service? America does not have this.
-    """
     input('buffer')
-    language = 'jp'
-    query_origin = "行き先"
+    language = 'de'
+    query_origin = "Mann kommt"
     query = '"'+query_origin+'"'
     target_sentences = 5
     target_understandability = 1.75
@@ -46,7 +48,7 @@ def weblang(query, language = 'ja', target_sentences = 10):
     print('ai training_done')
     #print('Class testing:', understandability_algorithm.predict("vocabs are ontime and dazzling and fantastic."))
     #quit()
-    response = search(query, tld='co.in', pause = 2, lang = language)
+    response = search(query, pause = 2, num = 30, stop = 30, lang = language)
     #response = search(query, tld='co.in', pause = 2)
     with open('storage.csv', 'w', encoding='utf8') as f:
         good_sentences = 0
@@ -95,7 +97,12 @@ def weblang(query, language = 'ja', target_sentences = 10):
                     if score == 1:
                         output_sentences.append([sentence, converted_sentence, converted_sentence_pronounciation, url, score])
                         good_sentences += 1
-
+                else:
+                    score = understandability_algorithm.predict(sentence)
+                    print(score)
+                    if score == 1:
+                        output_sentences.append([sentence, converted_sentence, converted_sentence_pronounciation, url, score])
+                        good_sentences += 1
 
 
 
