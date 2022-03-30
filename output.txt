@@ -1,34 +1,5 @@
 
 
-('しゅっぱつてん', 'http://www.romajidesu.com/dictionary/meaning-of-%E3%81%97%E3%82%85%E3%81%A3%E3%81%B1%E3%81%A4.html')
-('しゅっぱつじかん', 'http://www.romajidesu.com/dictionary/meaning-of-%E3%81%97%E3%82%85%E3%81%A3%E3%81%B1%E3%81%A4.html')
-('しゅっぱつとうじつ', 'http://www.romajidesu.com/dictionary/meaning-of-%E3%81%97%E3%82%85%E3%81%A3%E3%81%B1%E3%81%A4.html')
-('しゅっぱつじこく', 'http://www.romajidesu.com/dictionary/meaning-of-%E3%81%97%E3%82%85%E3%81%A3%E3%81%B1%E3%81%A4.html')
-('しゅっぱつび', 'http://www.romajidesu.com/dictionary/meaning-of-%E3%81%97%E3%82%85%E3%81%A3%E3%81%B1%E3%81%A4.html')
-
-
-
-('Übersetzung für "Der Mann kommt" im Englisch', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/Der+Mann+kommt')
-('Übersetzung für "ein Mann kommt" im Englisch', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/ein+Mann+kommt')
-('ein Mann kommt', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/ein+Mann+kommt')
-('ein Mann kommt', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/ein+Mann+kommt')
-('ein Mann kommt', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/ein+Mann+kommt')
-('ein Mann kommt', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/ein+Mann+kommt')
-
-['Jeder Mann kommt anders', 'https://www.menshealth.de/sex/orgasmus-wissen-fuer-profis/', 0.14069678164641133]
-['Übersetzung für "Der Mann kommt" im Englisch', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/Der+Mann+kommt', 0.21088690349347242]
-['Übersetzung für "ein Mann kommt" im Englisch', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/ein+Mann+kommt', 0.23416437332041543]
-['Das heißt, der Mann kommt zu früh, und zwar oft nur Sekunden oder wenige Minuten, nachdem er sich mit seiner Partnerin oder seinem Partner vereint hat', 'https://www.aok-bv.de/presse/medienservice/ratgeber/index_22963.html', 0.30840027648649687]
-['Suggest as a translation of "ein Mann kommt"', 'https://www.linguee.com/german-english/translation/ein+mann+kommt.html', 0.18142557822270788]
-['Suggest as a translation of "der Mann kommt aus"', 'https://www.linguee.com/german-english/translation/der+mann+kommt+aus.html', 0.18142557822270788]
-['Ein Mann kommt zurück', 'https://www.imdb.com/title/tt0631113/', 0.07250670530734887]
-["'Der weisse Mann kommt", 'https://calisphere.org/item/0efac0b314d7163bdf17256662eae237/', 0.07250670530734887]
-['Wenn beide Sexualpartner allerdings das gemeinsame Gefühl haben, der Mann kommt zu früh, sollten sie überlegen, einen Arzt zu konsultieren', 'https://www.zavamed.com/de/zu-frueh-kommen.html', 0.32058369103236006]
-['Traumprinz gesucht!: Wie Mann an den Mann kommt', 'https://www.amazon.de/Traumprinz-gesucht-Wie-Mann-kommt/dp/3861870126', 0.14669382049905458]
-['Jeder Mann kommt anders', 'https://www.menshealth.de/sex/orgasmus-wissen-fuer-profis/', 0.1406967816464113]
-['Übersetzung für "Der Mann kommt" im Englisch', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/Der+Mann+kommt', 0.21088690349347247]
-['Übersetzung für "ein Mann kommt" im Englisch', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/ein+Mann+kommt', 0.23416437332041545]
-['Jeder Mann kommt anders', 'https://www.menshealth.de/sex/orgasmus-wissen-fuer-profis/', 0.14069678164641133]
-['Übersetzung für "ein Mann kommt" im Englisch', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/ein+Mann+kommt', 0.23416437332041548]
-['ein Mann kommt', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/ein+Mann+kommt', 0.08055430381614401]
-['ein Mann kommt', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/ein+Mann+kommt', 0.08055430381614401]
+['Englische Übersetzung von Sekunden', 'https://www.collinsdictionary.com/de/worterbuch/deutsch-englisch/sekunden', 0.4723935734841337]
+['Sekundenbruchteil', 'https://www.collinsdictionary.com/de/worterbuch/deutsch-englisch/sekunden', 0.8422390082102575]
+['sekundengenau', 'https://www.collinsdictionary.com/de/worterbuch/deutsch-englisch/sekunden', 0.8422390082102575]

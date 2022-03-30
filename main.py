@@ -10,9 +10,10 @@ from understandability_algorithm import Understandability
 print('setting up selenium')
 os.environ['PATH'] += r';C:\Users\chenz\Documents\GitHub\East-AI-Unihacks-Team-2\chromewebdriver'
 options = Options()
-options.headless = True
+options.headless = False
 driver = webdriver.Chrome(options=options)
 print('finished setting up selenium')
+input('buffer')
 #import PySimpleGUI as pg
 
 #"""setup gui"""
@@ -115,9 +116,9 @@ def weblang(query_origin, language = 'de', target_sentences = 10):
             checkout = output_sentences[0][1]
             checkout_sentence = output_sentences[0][0]
             driver.get(checkout)
-            import pyperclip
-            pyperclip.copy(checkout_sentence)
-            spam = pyperclip.paste()
+            # import pyperclip
+            # pyperclip.copy(checkout_sentence)
+            # spam = pyperclip.paste()
             #print(spam)
             if api_broken == False:
                 converted_sentence, converted_sentence_pronounciation = translateEnglish(sentence)
@@ -199,9 +200,9 @@ def simple_weblang(query_origin = "Mann kommt", language = 'de', target_sentence
             checkout = output_sentences[0][1]
             checkout_sentence = output_sentences[0][0]
             driver.get(checkout)
-            import pyperclip
-            pyperclip.copy(checkout_sentence)
-            spam = pyperclip.paste()
+            # import pyperclip
+            # pyperclip.copy(checkout_sentence)
+            # spam = pyperclip.paste()
             #print(spam)
             if api_broken == False:
                 converted_sentence, converted_sentence_pronounciation = translateEnglish(sentence)
@@ -215,4 +216,4 @@ def simple_weblang(query_origin = "Mann kommt", language = 'de', target_sentence
     return output_sentences
 
 #weblang('行き先')
-print('\n\n\n',"\n".join([str(i) for i in simple_weblang(query_origin = 'Mann kommt')]))
+# print('\n\n\n',"\n".join([str(i) for i in simple_weblang(query_origin = 'Mann kommt')]))

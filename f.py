@@ -11,8 +11,8 @@ def index():
     # return jsonify('{"asw": "ask"}')
     print(request.method)
     # if request.method == 'POST':
-    # return jsonify(simple_weblang(request.form['query'], request.form['tgt-sentences']))
-    return jsonify(simple_weblang('Guten tag'))
+    return jsonify(simple_weblang(request.args['query'], 'de', int(request.args['tgt-sentences'])))
+    # return jsonify(simple_weblang())
 
 if (__name__) == '__main__':
     app.run(debug = True)
