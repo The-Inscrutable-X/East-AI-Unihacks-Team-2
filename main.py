@@ -11,6 +11,7 @@ print('setting up selenium')
 os.environ['PATH'] += r';C:\Users\chenz\Documents\GitHub\East-AI-Unihacks-Team-2\chromewebdriver'
 options = Options()
 options.headless = False
+options.add_argument("--log-level=3")
 driver = webdriver.Chrome(options=options)
 print('finished setting up selenium')
 input('buffer')
@@ -110,7 +111,7 @@ def weblang(query_origin, language = 'de', target_sentences = 10):
         print('finished')
         #converted_sentence, converted_sentence_pronounciation = translate_text('en', sentence)
         try:
-            with open('output.txt', 'a+', encoding='utf8') as f:
+            with open('output.txt', 'w', encoding='utf8') as f:
                 f.write('\n\n')
                 f.write('\n'.join([str(i) for i in output_sentences]))
             checkout = output_sentences[0][1]
@@ -138,10 +139,9 @@ def weblang(query_origin, language = 'de', target_sentences = 10):
 
 
 
-def simple_weblang(query_origin = "Mann kommt", language = 'de', target_sentences = 3):
+def simple_weblang(query_origin = "der alte", language = 'de', max_websites_to_scan = 30, target_sentences = 3, understandability_target = .3, parse_limit = 300):
 
     query = '"'+query_origin+'"'
-    parse_limit = 5 #limit of sentences to source from one website
     #target_understandability = 1.75
 
     print('ai training start, new session started')
@@ -151,19 +151,17 @@ def simple_weblang(query_origin = "Mann kommt", language = 'de', target_sentence
     print('ai training_done')
     #print('Class testing:', understandability_algorithm.predict("vocabs are ontime and dazzling and fantastic."))
     #quit()
-    response = search(query, pause = 2, num = target_sentences, stop = target_sentences, lang = language)
+    response = search(query, pause = 2, num = max_websites_to_scan, stop = max_websites_to_scan, lang = language)
     #response = search(query, tld='co.in', pause = 2)
     with open('storage.csv', 'w', encoding='utf8') as f:
         good_sentences = 0
         output_sentences = []
         data_sentences = []
-        for x in range(30):
+        for x in range(1,30):
             if good_sentences >= target_sentences:
                 break
             print('\nwebsite number', x)
             sentences, url = parse_another_site(response, driver, f, query_origin)
-            if parse_limit > target_sentences:
-                parse_limit = target_sentences
 
             for x, sentence in enumerate(sentences):
                 if x >= parse_limit:
@@ -187,7 +185,7 @@ def simple_weblang(query_origin = "Mann kommt", language = 'de', target_sentence
                 else:
                     score = understandability_algorithm.predict(sentence)
                     print(score)
-                    if score > 0:
+                    if score > understandability_target:
                         output_sentences.append([sentence, url, score])
                         good_sentences += 1
 
@@ -216,4 +214,4 @@ def simple_weblang(query_origin = "Mann kommt", language = 'de', target_sentence
     return output_sentences
 
 #weblang('行き先')
-# print('\n\n\n',"\n".join([str(i) for i in simple_weblang(query_origin = 'Mann kommt')]))
+# print('\n\n\n',"\n".join([str(i) for i in simple_weblang(query_origin = 'lightning', language = 'en', understandability_target = .3)]), sep = '')

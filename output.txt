@@ -1,5 +1,5 @@
 
 
-['Englische Übersetzung von Sekunden', 'https://www.collinsdictionary.com/de/worterbuch/deutsch-englisch/sekunden', 0.4723935734841337]
-['Sekundenbruchteil', 'https://www.collinsdictionary.com/de/worterbuch/deutsch-englisch/sekunden', 0.8422390082102575]
-['sekundengenau', 'https://www.collinsdictionary.com/de/worterbuch/deutsch-englisch/sekunden', 0.8422390082102575]
+["When A Man Comes Home TrailerInfoShoppingWatch laterShareCopy linkTap to unmuteIf playback doesn't begin shortly, try restarting your device", 'https://www.youtube.com/watch?v=w8RsqoGd1zA', 0.37227795180198475]
+['helpful•67ksf-2Apr 20, 2011DetailsEditRelease dateSeptember 14, 2007 (Denmark)Countries of originDenmarkSwedenOfficial siteOfficial site (Denmark)LanguagesDanishItalianEnglishAlso known asA Man Comes HomeFilming locationsSvendborg, Fyn, DenmarkProduction companiesBreidablick Film ABNimbus Film ProductionsSee more company credits at IMDbProBox officeEditBudget$400,000 (estimated)Gross worldwide$863,863See detailed box office info on IMDbProTechnical specsEditRuntime1 hour 40 minutesColorColorSound mixDolby SRDolby DigitalAspect ratio2', 'https://www.imdb.com/title/tt0951288/', 0.5543874770440882]
+['2007 Danish filmA Man Comes HomeDirected byThomas VinterbergWritten byMogens RukovThomas VinterbergStarringOliver Møller-Knauer  Ronja Mannov OlesenDistributed byZentropaRelease date', 'https://en.wikipedia.org/wiki/A_Man_Comes_Home', 0.5972166514717309]

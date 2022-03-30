@@ -5,7 +5,7 @@ from googlesearch import search
 import csv
 import re
 from time import sleep
-
+from nltk.tokenize import sent_tokenize
 
 #make more sentences for Audrey
 #tell visible elements from invisible ones manually
@@ -47,7 +47,7 @@ def text_from_html(html, query):
             last_t_type = t.parent.name'''
             #for s in re.split('\.', t):
             #    output += str(t)+'|'
-            output += '\n{}'.format(t)
+            output += '{}'.format(t)
 
     '''visible_texts = (i.get_text() for i in texts)
     for x,i in enumerate(visible_texts):
@@ -61,7 +61,10 @@ def text_from_html(html, query):
     print('html text areas found:', len(texts))
     #((s+'.').strip() for t in visible_texts if (t != '\n') for s in re.split('\.', t) if (len(s)>20 and t.parent.name != 'a'))
     #return [i.strip() for i in re.split('\.|\n|。', output) if len(i.strip())>20]
-    return [i.strip() for i in re.split('\.|\n|。', output) if len(i.strip())>len(query)]
+    #return [i.strip() for i in re.split('\.|\n|。', output) if len(i.strip())>len(query)]
+    output = sent_tokenize(output)
+    print(type(output))
+    return output
 
 def parse_another_site(response_object, driver, f, query):
     url = next(response_object)
