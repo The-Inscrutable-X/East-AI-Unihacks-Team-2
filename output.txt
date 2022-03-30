@@ -25,3 +25,6 @@
 ["'Der weisse Mann kommt", 'https://calisphere.org/item/0efac0b314d7163bdf17256662eae237/', 0.07250670530734887]
 ['Wenn beide Sexualpartner allerdings das gemeinsame Gefühl haben, der Mann kommt zu früh, sollten sie überlegen, einen Arzt zu konsultieren', 'https://www.zavamed.com/de/zu-frueh-kommen.html', 0.32058369103236006]
 ['Traumprinz gesucht!: Wie Mann an den Mann kommt', 'https://www.amazon.de/Traumprinz-gesucht-Wie-Mann-kommt/dp/3861870126', 0.14669382049905458]
+['Jeder Mann kommt anders', 'https://www.menshealth.de/sex/orgasmus-wissen-fuer-profis/', 0.1406967816464113]
+['Übersetzung für "Der Mann kommt" im Englisch', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/Der+Mann+kommt', 0.21088690349347247]
+['Übersetzung für "ein Mann kommt" im Englisch', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/ein+Mann+kommt', 0.23416437332041545]

@@ -10,7 +10,7 @@ from understandability_algorithm import Understandability
 print('setting up selenium')
 os.environ['PATH'] += r';C:\Users\chenz\Documents\GitHub\East-AI-Unihacks-Team-2\chromewebdriver'
 options = Options()
-options.headless = False
+options.headless = True
 driver = webdriver.Chrome(options=options)
 print('finished setting up selenium')
 #import PySimpleGUI as pg
@@ -132,7 +132,12 @@ def weblang(query_origin, language = 'de', target_sentences = 10):
         else:
             understandability_algorithm.update(data_sentences)
 
-def simple_weblang(query_origin = "Mann kommt", language = 'de', target_sentences = 10):
+
+
+
+
+
+def simple_weblang(query_origin = "Mann kommt", language = 'de', target_sentences = 3):
 
     query = '"'+query_origin+'"'
     parse_limit = 5 #limit of sentences to source from one website
@@ -154,12 +159,14 @@ def simple_weblang(query_origin = "Mann kommt", language = 'de', target_sentence
         for x in range(30):
             if good_sentences >= target_sentences:
                 break
-            print(x)
+            print('\nwebsite number', x)
             sentences, url = parse_another_site(response, driver, f, query_origin)
             if parse_limit > len(sentences):
                 parse_limit = len(sentences)
+
             for x, sentence in enumerate(sentences):
                 if x >= parse_limit:
+                    print('breaking and current x', x, 'limit', parse_limit)
                     break
 
                 api_broken = True
@@ -179,14 +186,14 @@ def simple_weblang(query_origin = "Mann kommt", language = 'de', target_sentence
                 else:
                     score = understandability_algorithm.predict(sentence)
                     print(score)
-                    if score > .3:
+                    if score > 0:
                         output_sentences.append([sentence, url, score])
                         good_sentences += 1
 
         print('finished')
         #converted_sentence, converted_sentence_pronounciation = translate_text('en', sentence)
         try:
-            with open('output.txt', 'a+', encoding='utf8') as f:
+            with open('output.txt', 'w', encoding='utf8') as f:
                 f.write('\n\n')
                 f.write('\n'.join([str(i) for i in output_sentences]))
             checkout = output_sentences[0][1]
@@ -204,8 +211,8 @@ def simple_weblang(query_origin = "Mann kommt", language = 'de', target_sentence
             print('query busted, do not include underlines or special formats, query must exist in website text exactly')
         driver.quit()
         understandability_algorithm.update(data_sentences)
-
-    return output_sentences 
+    print('returning output')
+    return output_sentences
 
 #weblang('行き先')
-simple_weblang('行き先')
+print('\n\n\n',"\n".join(simple_weblang(query_origin = 'Mann kommt')))
