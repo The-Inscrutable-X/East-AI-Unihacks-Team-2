@@ -28,3 +28,7 @@
 ['Jeder Mann kommt anders', 'https://www.menshealth.de/sex/orgasmus-wissen-fuer-profis/', 0.1406967816464113]
 ['Übersetzung für "Der Mann kommt" im Englisch', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/Der+Mann+kommt', 0.21088690349347247]
 ['Übersetzung für "ein Mann kommt" im Englisch', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/ein+Mann+kommt', 0.23416437332041545]
+['Jeder Mann kommt anders', 'https://www.menshealth.de/sex/orgasmus-wissen-fuer-profis/', 0.14069678164641133]
+['Übersetzung für "ein Mann kommt" im Englisch', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/ein+Mann+kommt', 0.23416437332041548]
+['ein Mann kommt', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/ein+Mann+kommt', 0.08055430381614401]
+['ein Mann kommt', 'https://context.reverso.net/%C3%BCbersetzung/deutsch-englisch/ein+Mann+kommt', 0.08055430381614401]

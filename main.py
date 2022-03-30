@@ -161,8 +161,8 @@ def simple_weblang(query_origin = "Mann kommt", language = 'de', target_sentence
                 break
             print('\nwebsite number', x)
             sentences, url = parse_another_site(response, driver, f, query_origin)
-            if parse_limit > len(sentences):
-                parse_limit = len(sentences)
+            if parse_limit > target_sentences:
+                parse_limit = target_sentences
 
             for x, sentence in enumerate(sentences):
                 if x >= parse_limit:
@@ -215,4 +215,4 @@ def simple_weblang(query_origin = "Mann kommt", language = 'de', target_sentence
     return output_sentences
 
 #weblang('行き先')
-print('\n\n\n',"\n".join(simple_weblang(query_origin = 'Mann kommt')))
+print('\n\n\n',"\n".join([str(i) for i in simple_weblang(query_origin = 'Mann kommt')]))
