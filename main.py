@@ -8,7 +8,7 @@ from understandability_algorithm import Understandability
 
 """setup selenium"""
 print('setting up selenium')
-os.environ['PATH'] += r';D:/Selenium_webautomation_drivers'
+os.environ['PATH'] += r';C:\Users\chenz\Documents\GitHub\East-AI-Unihacks-Team-2\chromewebdriver'
 options = Options()
 options.headless = False
 driver = webdriver.Chrome(options=options)
