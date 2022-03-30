@@ -167,7 +167,7 @@ class Understandability(object):
     def predict(self, input_sentence):
 
         features = [self._sentence_to_numbers(input_sentence)]
-        print(features, type(features))
+        print(input_sentence,'\n  ', features, type(features))
         X = pd.DataFrame(features, columns = ['word_count', 'char_count', 'sly_count'])
         MyPrediction = self.model.predict(X)
 
