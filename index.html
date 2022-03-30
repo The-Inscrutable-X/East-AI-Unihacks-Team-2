@@ -4,17 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Weblang</title>
 </head>
 <body>
+    <h1> Weblang </h1>
+    <h2> The ideal tool to lookup vocabulary in different languages in actual context. </h2>
     <form id="form"> 
-        <input placeholder="Query"/> 
-        <input placeholder="Target Sentences" type="number" min=10 max=50/> 
+        <label for="inp" class="inp">
+            <input name="query" placeholder="&nbsp;"/> 
+            <span class="label"> Query </span>
+            <span class="focus-bg"></span>
+        </label>
+
+        <label for="inp" class="inp">
+            <input name="tgt-sentences" type="number" min=1 max=20 placeholder="&nbsp;"/> 
+            <span class="label"> Target Sentences </span>
+            <span class="focus-bg"></span>
+        </label>
+
         <select hidden>
             <option value="ja">Japanese</option>
         </select>
-        <input type="submit"/>
+        <button class="btnfos btnfos-4" type="submit"> <span> Submit </span> </button>
     </form>
+    <div id="query-results"> </div>
     <script src="idx.js"> </script>
 </body>
 </html>

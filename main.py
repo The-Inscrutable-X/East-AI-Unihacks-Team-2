@@ -31,13 +31,13 @@ Interesting Results Archive:
 行き先: 【合唱曲】行き先 / 歌詞付き: [Chorus] Destination / with lyrics: Youtube Video
 めいわくでんわ: 迷惑電話ストップサービス: Prank call stop service: Japan has a scam service stop service? America does not have this.
 """
-def weblang(query, language = 'ja', target_sentences = 10):
+def weblang(query_origin, language = 'de', target_sentences = 10):
 
     input('buffer')
     language = 'de'
-    query_origin = "Mann kommt"
+    # query_origin = "Mann kommt"
     query = '"'+query_origin+'"'
-    target_sentences = 5
+    # target_sentences = 5
     target_understandability = 1.75
     #query = query_origin
 
