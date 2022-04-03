@@ -8,7 +8,8 @@ from understandability_algorithm import Understandability
 
 """setup selenium"""
 print('setting up selenium')
-os.environ['PATH'] += r';C:\Users\chenz\Documents\GitHub\East-AI-Unihacks-Team-2\chromewebdriver'
+#os.environ['PATH'] += r';C:\Users\chenz\Documents\GitHub\East-AI-Unihacks-Team-2\chromewebdriver'
+os.environ['PATH'] += r';D:/Selenium_webautomation_drivers'
 options = Options()
 options.headless = False
 options.add_argument("--log-level=3")
@@ -88,9 +89,9 @@ def weblang(query_origin, language = 'de', target_sentences = 10):
                 api_broken = True
                 if api_broken == False:
                     converted_sentence, converted_sentence_pronounciation = translateEnglish(sentence)
-                    """with open('storage.txt', 'a', encoding='utf8') as g:
-                        g.writelines('|original', sentence, '\n|translated', converted_sentence, '\n|pronounciation', converted_sentence_pronounciation, '\n')
-                        pass"""
+                    # with open('storage.txt', 'a', encoding='utf8') as g:
+                    #     g.writelines('|original', sentence, '\n|translated', converted_sentence, '\n|pronounciation', converted_sentence_pronounciation, '\n')
+                    #     pass
                     if converted_sentence_pronounciation == None:
                         score = understandability_algorithm.predict(converted_sentence)
                     elif converted_sentence_pronounciation != None:
@@ -153,7 +154,7 @@ def simple_weblang(query_origin = "der alte", language = 'de', max_websites_to_s
     #quit()
     response = search(query, pause = 2, num = max_websites_to_scan, stop = max_websites_to_scan, lang = language)
     #response = search(query, tld='co.in', pause = 2)
-    with open('storage.csv', 'w', encoding='utf8') as f:
+    with open('storage.csv', 'w', encoding='utf8') as file:
         good_sentences = 0
         output_sentences = []
         data_sentences = []
@@ -161,7 +162,7 @@ def simple_weblang(query_origin = "der alte", language = 'de', max_websites_to_s
             if good_sentences >= target_sentences:
                 break
             print('\nwebsite number', x)
-            sentences, url = parse_another_site(response, driver, f, query_origin)
+            sentences, url = parse_another_site(response, driver, file, query_origin)
 
             for x, sentence in enumerate(sentences):
                 if x >= parse_limit:
@@ -171,9 +172,9 @@ def simple_weblang(query_origin = "der alte", language = 'de', max_websites_to_s
                 api_broken = True
                 if api_broken == False:
                     converted_sentence, converted_sentence_pronounciation = translateEnglish(sentence)
-                    """with open('storage.txt', 'a', encoding='utf8') as g:
-                        g.writelines('|original', sentence, '\n|translated', converted_sentence, '\n|pronounciation', converted_sentence_pronounciation, '\n')
-                        pass"""
+                    # with open('storage.txt', 'a', encoding='utf8') as g:
+                    #     g.writelines('|original', sentence, '\n|translated', converted_sentence, '\n|pronounciation', converted_sentence_pronounciation, '\n')
+                    #     pass
                     if converted_sentence_pronounciation == None:
                         score = understandability_algorithm.predict(converted_sentence)
                     elif converted_sentence_pronounciation != None:
@@ -214,4 +215,4 @@ def simple_weblang(query_origin = "der alte", language = 'de', max_websites_to_s
     return output_sentences
 
 #weblang('行き先')
-# print('\n\n\n',"\n".join([str(i) for i in simple_weblang(query_origin = 'lightning', language = 'en', understandability_target = .3)]), sep = '')
+print('\n\n\n',"\n".join([str(i) for i in simple_weblang(query_origin = 'lightningstorm', language = 'en', understandability_target = .3)]), sep = '')

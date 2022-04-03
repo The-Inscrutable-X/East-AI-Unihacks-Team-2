@@ -20,50 +20,51 @@ def mask_visible(element):
 def text_from_html(html, query):
     soup = BeautifulSoup(html, 'html.parser')
     texts = soup.findAll(text=True)
+    print('html text areas found:', len(texts))
     output = ''
-    '''blacklist = [
-        '[document]',
-        'noscript',
-        'header',
-        'html',
-        'meta',
-        'head',
-        'input',
-        'script',
-        # there may be more elements you don't want, such as "style", etc.
-    ]'''
+    # blacklist = [
+    #     '[document]',
+    #     'noscript',
+    #     'header',
+    #     'html',
+    #     'meta',
+    #     'head',
+    #     'input',
+    #     'script',
+    #     # there may be more elements you don't want, such as "style", etc.
+    # ]
     for t in texts:
         if mask_visible(t):
             #add a newline if previous or next is hyperlink
-            '''if t.parent.name == 'a':
-                output += str(t)
-            elif last_t_type == 'a':
-                for s in re.split('\.', t):
-                    output += str(t)+'|'
-            elif t.parent.name != 'a':
-                for s in re.split('\.', t):
-                    if len(s)>20:
-                        output += str(t)+'|'
-            last_t_type = t.parent.name'''
+            # if t.parent.name == 'a':
+            #     output += str(t)
+            # elif last_t_type == 'a':
+            #     for s in re.split('\.', t):
+            #         output += str(t)+'|'
+            # elif t.parent.name != 'a':
+            #     for s in re.split('\.', t):
+            #         if len(s)>20:
+            #             output += str(t)+'|'
+            # last_t_type = t.parent.name
             #for s in re.split('\.', t):
             #    output += str(t)+'|'
-            output += '{}'.format(t)
+            output += ' {}'.format(t)
 
-    '''visible_texts = (i.get_text() for i in texts)
-    for x,i in enumerate(visible_texts):
-        print(i)
-        if x>5:
-            break
-    print('type', type(texts))
-    def generator(texts):
-        for t in texts:
-            pass'''
-    print('html text areas found:', len(texts))
+    # visible_texts = (i.get_text() for i in texts)
+    # for x,i in enumerate(visible_texts):
+    #     print(i)
+    #     if x>5:
+    #         break
+    # print('type', type(texts))
+    # def generator(texts):
+    #     for t in texts:
+    #         pass
     #((s+'.').strip() for t in visible_texts if (t != '\n') for s in re.split('\.', t) if (len(s)>20 and t.parent.name != 'a'))
     #return [i.strip() for i in re.split('\.|\n|。', output) if len(i.strip())>20]
     #return [i.strip() for i in re.split('\.|\n|。', output) if len(i.strip())>len(query)]
-    output = sent_tokenize(output)
-    print(type(output))
+    output = [i.strip() for i in re.split('\.|\n|。', output)]
+    output = sent_tokenize(" ".join(output))
+    print(type(output), len(output))
     return output
 
 def parse_another_site(response_object, driver, f, query):
