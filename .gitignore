@@ -3,3 +3,4 @@ __pycache__
 chromewebdriver
 storage.csv
 .google-cookie
+.DS_Store
